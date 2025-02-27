@@ -147,6 +147,8 @@ export type TConfigInputField =
   | "hidden"
   | "date";
 
+type showFieldWhen = (fields: IConfigInputField[]) => boolean;
+
 export interface IConfigInputField {
   originalName?: string;
   name: string;
@@ -165,6 +167,7 @@ export interface IConfigInputField {
   urlReplaceOnly?: boolean;
   multi?: boolean;
   selectLimit?: number;
+  showFieldWhen?: showFieldWhen;
 }
 
 export interface IConfigOptionSource {
