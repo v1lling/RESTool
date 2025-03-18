@@ -939,6 +939,14 @@ You can also override all translations of the `global` namespace for a specific 
 }
 ```
 
+## Logo Customization
+
+To customize the RESTool header logo:
+
+1. Add your logo image file named `logo.png` to this directory (`src/assets/images/`).
+2. The logo will automatically appear in the header when the file exists.
+3. The header will remain hidden if no logo file is present.
+
 ## Development
 
 Clone RESTool repository to get started.
