@@ -520,7 +520,11 @@ Here is an example for changing payload to literal:
 
 ####  Custom Styles
 
-The `customStyles` property allows you to control the look & feel of your RESTool app. The object will contains a `vars` property where you'll be able to change the deafult colors of RESTool.
+RESTool provides two ways to customize the look & feel of your application:
+
+##### Basic Customization (via config.json)
+
+The `customStyles` property in your config.json file allows you to change the default colors of RESTool through CSS variables.
 
 Here's a list of variable names you may change:
 
@@ -554,6 +558,45 @@ Usage example in `config.json` file:
       "appBackground": "#888",
       "navBackground": "#333"
       "navItemHoverBackground": "#454545"
+    }
+  }
+}
+```
+
+##### Advanced Customization (via SCSS)
+
+For more advanced styling customization, RESTool allows you to add a custom SCSS file to your project.
+Creating this file allows you to override any existing styles and add custom CSS rules.
+
+To use this feature:
+1. Create the file `src/common/styles/custom-overrides.scss`. 
+2. Add your custom SCSS rules. All styles should be nested under the `.restool-app` class to ensure proper specificity. Use deeper nesting to target elements precisely to make sure the overrides are applied correctly. If needed, add !important to force an override.
+3. Your changes will be automatically applied to your RESTool instance
+
+Common customizations you can make through this file include:
+- Custom font families and typography
+- Component spacing and layouts
+- Advanced styling of tables, buttons, and other UI elements
+
+Example usage in `custom-overrides.scss`:
+
+```scss
+.restool-app {
+  // Custom font
+  font-family: 'Your Font', sans-serif;
+
+  // Custom variables
+  --custom-color: #f5f5f5;
+  
+  // Component overrides
+  .app-content {
+    .pure-table {
+      border-radius: 8px;
+      box-shadow: none;
+      
+      th {
+        background-color: var(--custom-color);
+      }
     }
   }
 }
