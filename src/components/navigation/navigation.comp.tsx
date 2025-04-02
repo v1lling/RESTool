@@ -72,13 +72,13 @@ const NavigationComp = ({ context: { config, authService, loggedInUsername, setL
               </div>
             )}
             <div className="app-nav-logout">
-              <NavLink to="/change-password" className="change-password-link">
+              <NavLink to="/change-password" className="app-nav-link change-password">
                 {config?.auth?.icons?.changePassword && (
                   <i className={`fa fa-${config.auth.icons.changePassword}`} aria-hidden="true"></i>
                 )}{' '}
                 {translate('auth.changePassword')}
               </NavLink>
-              <NavLink to="/login" onClick={logout} className="logout-link">
+              <NavLink to="/login" onClick={logout} className="app-nav-link logout">
                 {config?.auth?.icons?.logout && (
                   <i className={`fa fa-${config.auth.icons.logout}`} aria-hidden="true"></i>
                 )}{' '}
