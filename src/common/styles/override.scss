@@ -1,0 +1,326 @@
+.restool-app {
+
+    // Font Style
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    // Overwrite global variables
+    // Could also be overwritten using config.js
+    --navBackground: #FAFAFB;
+    --navText: #68727d;
+    --navItemText: #68727d;
+    --navItemHoverBackground: #FAFAFB;
+    --navItemActiveBackground: #FAFAFB;
+    --addButtonBackground: #0A77FF;
+    --addButtonHoverBackground: #0A77FF;
+
+    // Additional Variables
+    --uptrust-background: #FAFAFB;
+    --uptrust-blue: #0A77FF;
+    --uptrust-red: #EA4C2D;
+    --uptrust-second-gray: #68727d;
+    --uptrust-border-gray: #eaecf0;
+    --uptrust-table-header-background-gray: #fafafc;
+    --uptrust-table-header-text-gray: #68727d;
+
+    --uptrust-enabled: #27b973;
+    --uptrust-enabled-light: #e9f8f1;
+
+    --uptrust-disabled: #e33b32;
+    --uptrust-disabled-light: #ffefee;
+}
+
+/* Nav 
+            Changes after Logo + Navbar PR has been merged
+ Nav */
+.restool-app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app-content {
+    overflow: hidden;
+    flex: 1;
+}
+
+.app-page {
+    overflow-y: scroll;
+}
+
+.restool-app .app-content aside {
+    height: unset;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    overflow: hidden;
+}
+
+.restool-app .app-content aside .app-nav {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+
+/*
+Navigation
+*/
+.restool-app {
+
+    // Re-add with logo branch
+    .app-content {
+
+
+
+        aside {
+            box-shadow: none;
+        }
+
+
+        .app-nav {
+            .app-nav-wrapper {
+                a {
+                    font-weight: bold;
+
+                    &.active {
+                        color: var(--uptrust-blue);
+                    }
+                }
+
+                .app-nav-link {
+                    i.fa {
+                        &::before {
+                            content: '';
+                        }
+
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        vertical-align: middle;
+                    }
+
+                    &.uptrust i.fa {
+                        background-image: url('/assets/icons/cog.svg');
+                    }
+
+                    &.uptrust-keysources i.fa {
+                        background-image: url('/assets/icons/key.svg');
+                    }
+
+                    &.uptrust-domainkeys i.fa {
+                        background-image: url('/assets/icons/globe.svg');
+                    }
+
+                    &.change-password i.fa {
+                        background-image: url('/assets/icons/changepwd.svg');
+                    }
+
+                    &.logout i.fa {
+                        background-image: url('/assets/icons/logout.svg');
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+/*
+Page Spacing
+*/
+.restool-app {
+
+    .restool-header,
+    aside {
+        // Additional left padding
+        padding-left: 20px;
+    }
+
+    .app-content {
+        aside {
+            h1 {
+                display: flex;
+                align-items: center;
+                padding: 0px;
+                min-height: 100px;
+                padding-left: 20px;
+                font-size: 20px;
+                color: var(--uptrust-second-gray);
+                font-weight: 600;
+            }
+        }
+
+        .app-page-header {
+            padding: 0px;
+            min-height: 100px;
+            padding-right: 30px;
+        }
+
+        .app-page-content {
+            padding: 5px 0px;
+        }
+
+        .app-page {
+            min-height: unset;
+        }
+
+    }
+}
+
+
+/*
+Page Header
+*/
+.app-content {
+    .app-page-header {
+        // Background and Shadow
+        background: var(--uptrust-background);
+        box-shadow: none;
+
+        // Title and Subtitle
+        h2 {
+            line-height: 1;
+        }
+
+        hgroup h4 {
+            margin: 0;
+            color: var(--uptrust-second-gray);
+            font-size: 16px;
+        }
+
+        // Action Buttons
+        .add-item {
+            // color from customLabels
+            font-size: 14px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+    }
+
+}
+
+
+/*
+Table
+*/
+.restool-app {
+
+    .app-content {
+        .pure-table {
+            box-shadow: none;
+            border: 1px solid var(--uptrust-border-gray);
+            border-radius: 8px;
+            border-collapse: separate;
+            border-spacing: 0;
+            // overflow: hidden;
+
+            // Row border
+            th,
+            td {
+                border-bottom: 1px solid var(--uptrust-border-gray);
+            }
+
+            tr:last-child td {
+                border-bottom: none;
+            }
+
+            // No uppercase
+            th {
+                text-transform: none;
+                background-color: var(--uptrust-table-header-background-gray);
+                color: var(--uptrust-table-header-text-gray);
+                font-weight: normal;
+                font-size: 13px;
+                box-shadow: none;
+                padding: 10px 15px;
+
+                &:first-child {
+                    border-top-left-radius: 8px;
+                }
+
+                &:last-child {
+                    border-top-right-radius: 8px;
+                }
+
+                .th-content .help-icon .help-text {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                }
+            }
+
+            // Table Cells
+            td {
+                &.id {
+                    font-weight: 400;
+                }
+
+                // Status Icon
+                .bool {
+                    width: 22px;
+                    height: 22px;
+
+                    &.true {
+                        background-color: var(--uptrust-enabled);
+                        border: 6px solid var(--uptrust-enabled-light);
+                    }
+
+                    &.false {
+                        height: 10px;
+                        width: 10px;
+                        border-radius: 50%;
+                        background-color: var(--uptrust-disabled-light);
+                        border: 1px solid var(--uptrust-disabled);
+                        box-shadow: 0 0 0 5px var(--uptrust-disabled-light);
+                        margin-left: 5px;
+                    }
+                }
+
+                // Action Buttons
+                .actions-wrapper {
+                    button {
+                        height: 22px;
+                        width: 22px;
+                        padding: 0;
+                        background: transparent;
+
+                        i {
+                            font-size: 20px;
+                        }
+
+                        .fa-pencil-square-o {
+                            color: var(--uptrust-blue);
+                        }
+
+                        .fa-trash {
+                            color: var(--uptrust-red);
+                        }
+
+                        .fa-times {
+                            color: var(--uptrust-disabled);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
+Card Layout
+*/
+
+.restool-app .app-content .app-page-content {
+    .cards-wrapper {
+        justify-content: start;
+
+        .card {
+            flex-basis: 500px;
+
+            .card-row label {
+                width: 300px;
+            }
+        }
+    }
+}
