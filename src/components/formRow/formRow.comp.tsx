@@ -503,7 +503,7 @@ export const FormRow = withAppContext(
     }
 
     return (
-      <div className={`form-row ${direction || "row"}`}>
+      <div className={`form-row ${direction || "row"} ${field.name}`}>
         {field.type !== "hidden" && (
           <label>
             {getFieldLabel()}
