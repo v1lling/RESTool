@@ -13,12 +13,17 @@
       flex-direction: column;
     }
 
-    aside {
-      width: var(--nav-width);
-      background: v(navBackground, #3C3E6F);
-      color: v(navText, #fff);
-      box-shadow: inset -2px 0px 3px rgba(0, 0, 0, 0.3);
-      z-index: 10;
+  aside {
+    display: flex;
+    flex-direction: column;
+    width: var(--nav-width);
+    background: v(navBackground, #3C3E6F);
+    color: v(navText, #fff);
+    box-shadow: inset -2px 0px 3px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    height: 100vh;
 
       @media screen and (max-width: 800px) {
         height: auto;
