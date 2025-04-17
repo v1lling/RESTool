@@ -948,12 +948,16 @@ For example, for the "Characters" page:
 }
 ```
 
-##### Field labels and help texts
+##### Fields: Labels, Helptexts and Values
 
 Define the field labels and optional help texts in the language files under the namespace of the page.
 Use the `id` of the page as defined in the configuration file.
-Then define the translations of the field labels and help texts under the `fields` property with the field `name` as the key.
+Then define the translations under the `fields` property with the field `name` as the key.
 For example, for the "Characters" page:
+You can translate the:
+- field labels
+- field helptexts
+- field values
 
 ```json
 {
@@ -961,18 +965,31 @@ For example, for the "Characters" page:
     "characters": {
       "fields": {
         "name": {
-          "label": "Nom",
-          "helpText": "Entrez le nom complet du personnage"
+          "label": "Nom",  // Field label translation
+          "helpText": "Le nom du personnage"  // Optional help text
         },
         "age": {
-          "label": "Âge",
-          "helpText": "Âge du personnage en années"
+          "label": "Âge"
+        },
+        "confidentiality": {
+          "label": "Confidentialité",
+          "values": {  // Translates the actual field values
+            "public": "public",
+            "private": "privé"
+          }
         }
       }
     }
   }
 }
 ```
+
+The `values` object allows you to translate the actual values that appear in select dropdowns and displays. For example, if you have a select field with options `["public", "private"]`, you can provide translations for those values. The original values will still be sent to the backend, but users will see the translated text in the UI.
+
+This works for:
+- Values displayed in tables (display field type: `text`)
+- Values displayed in cards (display field type: `text`)
+- Select dropdown options in forms (input field type: `select`). For this to work, the `options` property in the configuration file should be an array of value strings, not an array of objects containing `display` and `value` properties, as described in the [Input fields](#input-fields) section.
 
 ##### Other translations
 
