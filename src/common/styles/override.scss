@@ -102,23 +102,23 @@ Navigation
                         vertical-align: middle;
                     }
 
-                    &.uptrust i.fa {
+                    &.app-nav-link-uptrust i.fa {
                         background-image: url('/assets/icons/cog.svg');
                     }
 
-                    &.uptrust-keysources i.fa {
+                    &.app-nav-link-uptrust-keysources i.fa {
                         background-image: url('/assets/icons/key.svg');
                     }
 
-                    &.uptrust-domainkeys i.fa {
+                    &.app-nav-link-uptrust-domainkeys i.fa {
                         background-image: url('/assets/icons/globe.svg');
                     }
 
-                    &.change-password i.fa {
+                    &.app-nav-link-change-password i.fa {
                         background-image: url('/assets/icons/changepwd.svg');
                     }
 
-                    &.logout i.fa {
+                    &.app-nav-link-logout i.fa {
                         background-image: url('/assets/icons/logout.svg');
                     }
 
@@ -252,7 +252,7 @@ Table
 
             // Table Cells
             td {
-                &.id {
+                &.td-id {
                     font-weight: 400;
                 }
 
