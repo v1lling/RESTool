@@ -54,12 +54,12 @@ const NavigationComp = ({ context: { config, authService, loggedInUsername, setL
                   <a href={page?.customLink} target="_blank" key={`page_${idx}`} className={`app-nav-link app-nav-link-${page.id}`}>
                     {icon}
                     <span className="nav-item-text">
-                  {pageName}
-                </span>
+                      {pageName}
+                    </span>
                   </a> :
                   <NavLink to={`/${page.id || idx + 1}`} activeClassName="active" key={`page_${idx}`}
                     className={`app-nav-link app-nav-link-${page.id}`}
-                  onClick={() => setIsOpened(false)}>
+                    onClick={() => setIsOpened(false)}>
                     {icon}
                     <span className="nav-item-text">{pageName}</span>
                   </NavLink>
