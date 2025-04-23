@@ -51,11 +51,14 @@ const NavigationComp = ({ context: { config, authService, loggedInUsername, setL
                 const pageName = translate(`pages.${page.id}.title`) || page.id;
                 const icon = page.icon ? <i className={`fa fa-${page.icon}`} aria-hidden="true"></i> : null;
                 return page?.customLink ?
-                  <a href={page?.customLink} target="_blank" key={`page_${idx}`} className={`app-nav-link ${page.id}`}>
+                  <a href={page?.customLink} target="_blank" key={`page_${idx}`} className={`app-nav-link app-nav-link-${page.id}`}>
+                    {icon}
+                    <span className="nav-item-text">
                   {pageName}
-                </a> :
+                </span>
+                  </a> :
                   <NavLink to={`/${page.id || idx + 1}`} activeClassName="active" key={`page_${idx}`}
-                    className={`app-nav-link ${page.id}`}
+                    className={`app-nav-link app-nav-link-${page.id}`}
                   onClick={() => setIsOpened(false)}>
                     {icon}
                     <span className="nav-item-text">{pageName}</span>
@@ -72,13 +75,13 @@ const NavigationComp = ({ context: { config, authService, loggedInUsername, setL
               </div>
             )}
             <div className="app-nav-logout">
-              <NavLink to="/change-password" className="app-nav-link change-password">
+              <NavLink to="/change-password" className="app-nav-link app-nav-link-change-password">
                 {config?.auth?.icons?.changePassword && (
                   <i className={`fa fa-${config.auth.icons.changePassword}`} aria-hidden="true"></i>
                 )}{' '}
                 {translate('auth.changePassword')}
               </NavLink>
-              <NavLink to="/login" onClick={logout} className="app-nav-link logout">
+              <NavLink to="/login" onClick={logout} className="app-nav-link app-nav-link-logout">
                 {config?.auth?.icons?.logout && (
                   <i className={`fa fa-${config.auth.icons.logout}`} aria-hidden="true"></i>
                 )}{' '}
