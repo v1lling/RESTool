@@ -213,8 +213,6 @@ Page Header
         }
 
         hgroup h4 {
-          //  margin:0 ;
-           // margin-top: 1rem;
             color: var(--uptrust-second-gray);
             font-size: 16px;
         }
@@ -313,20 +311,31 @@ Table
                         padding: 0;
                         background: transparent;
 
-                        i {
+                        i.fa {
                             font-size: 20px;
+
+                            &::before {
+                                content: '';
+                            }
+
+                            display: inline-block;
+                            width: 16px;
+                            height: 16px;
+                            margin-right: 1px;
+                            margin-left: 1px;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            vertical-align: middle;
+
                         }
 
                         .fa-pencil-square-o {
-                            color: var(--uptrust-blue);
-                        }
-
-                        .fa-trash {
-                            color: var(--uptrust-red);
+                            background-image: url('/assets/icons/edit.svg');
                         }
 
                         .fa-times {
-                            color: var(--uptrust-disabled);
+                            background-image: url('/assets/icons/delete.svg');
                         }
                     }
                 }
