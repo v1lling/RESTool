@@ -29,9 +29,9 @@
     --uptrust-disabled-light: #ffefee;
 }
 
-/* Nav 
-            Changes after Logo + Navbar PR has been merged
- Nav */
+/* 
+Nav 
+*/
 .restool-app {
     display: flex;
     flex-direction: column;
@@ -67,15 +67,11 @@ Navigation
 */
 .restool-app {
 
-    // Re-add with logo branch
     .app-content {
-
-
 
         aside {
             box-shadow: none;
         }
-
 
         .app-nav {
             .app-nav-wrapper {
@@ -87,6 +83,10 @@ Navigation
                     }
                 }
 
+                .app-nav-logout {
+                    padding-bottom: 2rem;
+                }
+
                 .app-nav-link {
                     i.fa {
                         &::before {
@@ -94,25 +94,52 @@ Navigation
                         }
 
                         display: inline-block;
-                        width: 16px;
-                        height: 16px;
+                        width: 14px;
+                        height: 14px;
+                        margin-right: 1px;
+                        margin-left: 1px;
                         background-size: contain;
                         background-repeat: no-repeat;
                         background-position: center;
                         vertical-align: middle;
+
                     }
 
-                    &.app-nav-link-uptrust i.fa {
-                        background-image: url('/assets/icons/cog.svg');
+                    &.app-nav-link-uptrust {
+                        i.fa {
+                            background-image: url('/assets/icons/cog.svg');
+                        }
+
+                        &.active i.fa {
+                            background-image: url('/assets/icons/cog.active.svg');
+                        }
                     }
 
-                    &.app-nav-link-uptrust-keysources i.fa {
-                        background-image: url('/assets/icons/key.svg');
+                    &.app-nav-link-uptrust-keysources {
+                        i.fa {
+                            background-image: url('/assets/icons/key.svg');
+                            height: 16px;
+                            width: 16px;
+                            margin-right: 0px;
+                            margin-left: 0px;
+                        }
+
+                        &.active i.fa {
+                            background-image: url('/assets/icons/key.active.svg');
+                        }
                     }
 
-                    &.app-nav-link-uptrust-domainkeys i.fa {
-                        background-image: url('/assets/icons/globe.svg');
+                    &.app-nav-link-uptrust-domainkeys {
+
+                        i.fa {
+                            background-image: url('/assets/icons/globe.svg');
+                        }
+
+                        &.active i.fa {
+                            background-image: url('/assets/icons/globe.active.svg');
+                        }
                     }
+
 
                     &.app-nav-link-change-password i.fa {
                         background-image: url('/assets/icons/changepwd.svg');
@@ -121,12 +148,12 @@ Navigation
                     &.app-nav-link-logout i.fa {
                         background-image: url('/assets/icons/logout.svg');
                     }
-
                 }
             }
         }
     }
 }
+
 
 /*
 Page Spacing
@@ -186,7 +213,8 @@ Page Header
         }
 
         hgroup h4 {
-            margin: 0;
+          //  margin:0 ;
+           // margin-top: 1rem;
             color: var(--uptrust-second-gray);
             font-size: 16px;
         }
@@ -317,9 +345,26 @@ Card Layout
 
         .card {
             flex-basis: 500px;
+            padding-top: 20px;
 
             .card-row label {
                 width: 300px;
+            }
+        }
+    }
+}
+
+/*
+Form Popup
+*/
+
+#popup-portal {
+    .form-popup {
+        .popup-content {
+            .form-row {
+                label {
+                    width: 170px;
+                }
             }
         }
     }
