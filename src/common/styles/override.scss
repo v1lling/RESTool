@@ -61,6 +61,40 @@ Nav
     overflow-y: auto;
 }
 
+/*
+Logo / Version
+*/
+.restool-app .restool-header .logo-container {
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .app-version {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        margin: 0;
+        
+        h3, h4 {
+            display: flex;
+            align-items: center;
+            padding: 0px;
+            color: var(--uptrust-second-gray);
+            font-weight: 400;
+            margin: 0;
+            padding-left: 20px;
+            
+        }
+        h3 {
+            font-size: 16px;
+        }
+        h4 {
+            font-size: 14px;
+        }
+    }
+}
 
 /*
 Navigation
@@ -172,7 +206,6 @@ Page Spacing
                 display: flex;
                 align-items: center;
                 padding: 0px;
-                min-height: 100px;
                 padding-left: 20px;
                 font-size: 20px;
                 color: var(--uptrust-second-gray);
