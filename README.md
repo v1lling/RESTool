@@ -110,6 +110,8 @@ export default {
 
 ### Auth Config
 
+// TODO: describe how to do when having api key
+
 The `auth` property allows you to configure authentication endpoints. It has the following properties:
 
 | Property | Type | Required? | Description | Expected Format |

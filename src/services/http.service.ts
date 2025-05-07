@@ -86,7 +86,8 @@ class HttpService {
       method: params.method ? params.method.toUpperCase() : 'GET',
       headers: Object.assign({}, this.requestHeaders, params.headers || {}),
       body: params.method === 'post' || params.method === 'put' || params.method === 'patch' ? params.body : undefined,
-      credentials: 'include' // Include cookies in the request
+      // TODO: Credentials should only be included when auth is required
+      //credentials: 'include' // Include cookies in the request
     };
 
     return {
@@ -116,6 +117,7 @@ class HttpService {
   }
 
   private async handleError(res: Response) {
+    // TODO: only do this f we have auth enabled
     if (res.status === 401) {
       const currentPath = document.location.hash.substring(1); // Remove the # from the hash
       const basePath = currentPath.split('?')[0]; // Extract base path without query parameters
