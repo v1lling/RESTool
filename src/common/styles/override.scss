@@ -122,6 +122,9 @@ Navigation
                 }
 
                 .app-nav-link {
+                    align-items: end; 
+                    line-height: 14px;
+                    
                     i.fa {
                         &::before {
                             content: '';
