@@ -49,6 +49,7 @@ Nav
 .app-page {
     overflow-y: scroll;
     font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 400;
 }
 
 .restool-app .app-content aside {
@@ -276,6 +277,7 @@ Table
 
     .app-content {
         .pure-table {
+            font-weight: 400;
             box-shadow: none;
             border: 1px solid var(--uptrust-border-gray);
             border-radius: 8px;
@@ -319,7 +321,11 @@ Table
             // Table Cells
             td {
                 &.td-id {
-                    font-weight: 400;
+                    color: #252525;
+                }
+
+                &.td-type {
+                    color: #252525;
                 }
 
                 // Status Icon
@@ -400,6 +406,7 @@ Card Layout
         .card {
             flex-basis: 500px;
             padding-top: 20px;
+            font-weight: 400;
 
             .card-row label {
                 width: 300px;
