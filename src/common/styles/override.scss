@@ -67,7 +67,7 @@ Nav
 }
 
 /*
-Logo / Version
+Logo
 */
 .restool-app .restool-header .logo-container {
 
@@ -75,30 +75,6 @@ Logo / Version
     justify-content: space-between;
     width: 100%;
 
-    .app-version {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: center;
-        margin: 0;
-        
-        h3, h4 {
-            display: flex;
-            align-items: center;
-            padding: 0px;
-            color: var(--uptrust-second-gray);
-            font-weight: 400;
-            margin: 0;
-            padding-left: 20px;
-            
-        }
-        h3 {
-            font-size: 16px;
-        }
-        h4 {
-            font-size: 14px;
-        }
-    }
 }
 
 /*
@@ -122,14 +98,10 @@ Navigation
                     }
                 }
 
-                .app-nav-logout {
-                    padding-bottom: 2rem;
-                }
-
                 .app-nav-link {
-                    align-items: end; 
+                    align-items: end;
                     line-height: 14px;
-                    
+
                     i.fa {
                         &::before {
                             content: '';
@@ -190,6 +162,14 @@ Navigation
                     &.app-nav-link-logout i.fa {
                         background-image: url('/assets/icons/logout.svg');
                     }
+                }
+
+                // Version Build
+                .app-version {
+                    padding: 10px 20px 10px 20px;
+                    font-weight: 200;
+                    font-size: 12px;
+                    margin-bottom: 10px;
                 }
             }
         }
@@ -376,7 +356,8 @@ Table
 
                         }
 
-                        i.fa-arrow-up, i.fa-arrow-down {
+                        i.fa-arrow-up,
+                        i.fa-arrow-down {
                             font-size: 16px;
                             color: var(--uptrust-second-gray);
                         }
@@ -389,6 +370,16 @@ Table
                             background-image: url('/assets/icons/delete.svg');
                         }
                     }
+                }
+            }
+            
+            // Hide up/down arrows for first/last rows
+            tbody {
+                tr:first-child td .actions-wrapper button:has(i.fa-arrow-up),
+                tr:last-child td .actions-wrapper button:has(i.fa-arrow-down) {
+                    pointer-events: none;
+                    opacity: 0.3;
+                    cursor: default;
                 }
             }
         }

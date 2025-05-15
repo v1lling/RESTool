@@ -171,7 +171,12 @@ export const FormPopup = withAppContext(({ context, title, type, successMessage,
       finalObject[field.name] = field.value;
 
       if (containFiles && !field.useInUrl) {
-        formData.append(field.name, field.value ?? '');
+        if (field.type === 'boolean') {
+          // Append boolean values as strings to avoid issues with FormData
+          formData.append(field.name, field.value ? 'true' : 'false');
+        } else {
+          formData.append(field.name, field.value);
+        }
       }
 
       const isFieldValueEmpty = (field: IConfigInputField): boolean => {
@@ -238,10 +243,10 @@ export const FormPopup = withAppContext(({ context, title, type, successMessage,
 
   function formChanged(fieldName: string, value: any) {
     let updatedFormFields: IConfigInputField[] = [...formFields];
-    
+
     // First update the field value
     updatedFormFields = dataHelpers.updateInputFieldFromFields(fieldName, value, updatedFormFields);
-    
+
     // Find the changed field and execute its onChange callback if it exists
     const changedField = updatedFormFields.find(field => field.name === fieldName);
     if (changedField?.onChange) {

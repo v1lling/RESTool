@@ -5,6 +5,8 @@ import { IAppContext } from '../app.context';
 import { withAppContext } from '../withContext/withContext.comp';
 import { Button } from '../button/button.comp';
 import { toast } from 'react-toastify';
+import { buildInfo } from '../../version';
+import i18n from 'i18next';
 
 import './navigation.scss';
 
@@ -67,6 +69,9 @@ const NavigationComp = ({ context: { config, authService, loggedInUsername, setL
             }
           </div>
         </div>
+
+        <div>
+
         {!!loggedInUsername && (
           <div className="app-nav-section">
             {!!translate('navigation.userManagement') && (
@@ -93,6 +98,22 @@ const NavigationComp = ({ context: { config, authService, loggedInUsername, setL
         {!loggedInUsername && (
           <div className="app-nav-section" />
         )}
+
+        {/* Uptrust Build Info */}
+        {buildInfo && (
+          <div className="app-nav-section">
+            <div className="app-version">
+              {buildInfo.version || 'dev'} 
+              <br />
+               {new Date(buildInfo.buildDate).toLocaleDateString(i18n.language, {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              })}
+            </div>
+          </div>
+        )}
+        </div>
       </div>
     </nav>
   );
