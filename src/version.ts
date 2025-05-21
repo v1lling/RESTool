@@ -5,8 +5,9 @@ interface BuildInfo {
 
 // This file is processed by Maven during the build process.
 // The values will be replaced with the actual version and build date.
-// Then it will be copied to /src directory.
+// Src File: /maven/version.tsx
+// Dest File: /src/version.tsx
 export const buildInfo: BuildInfo = {
-    version: 'dev',
-    buildDate: new Date().toISOString(),
+    version: '0.9.0-SNAPSHOT',
+    buildDate: '2025-05-13T12:10:51Z'
 };
