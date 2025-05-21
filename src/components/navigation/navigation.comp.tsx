@@ -103,7 +103,7 @@ const NavigationComp = ({ context: { config, authService, loggedInUsername, setL
         {buildInfo && (
           <div className="app-nav-section">
             <div className="app-version">
-              {buildInfo.version || 'dev'} 
+              v. {buildInfo.version || 'dev'} 
               <br />
                {new Date(buildInfo.buildDate).toLocaleDateString(i18n.language, {
                 year: 'numeric',
