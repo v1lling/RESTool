@@ -175,7 +175,7 @@ export const FormPopup = withAppContext(({ context, title, type, successMessage,
           // Append boolean values as strings to avoid issues with FormData
           formData.append(field.name, field.value ? 'true' : 'false');
         } else {
-          formData.append(field.name, field.value);
+          formData.append(field.name, field.value || '');
         }
       }
 
