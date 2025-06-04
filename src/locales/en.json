@@ -96,10 +96,10 @@
       "text": "Enter text..."
     },
     "successMessages": {
-      "addItem": "Item added successfully",
-      "customActions": "Action completed successfully",
-      "deleteItem": "Item deleted successfully",
-      "editItem": "Item updated successfully"
+      "addItem": "",
+      "customActions": "",
+      "deleteItem": "",
+      "editItem": ""
     }
   },
   "navigation": {
