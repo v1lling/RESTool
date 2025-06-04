@@ -1,0 +1,48 @@
+@import "../../common/styles/vars.scss";
+
+.unapplied-changes-banner {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  padding: 12px 0;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border-top: 1px solid #f2f2f2;
+
+  .banner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .warning-text {
+    font-weight: 500;
+    
+    .fa {
+      margin-right: 8px;
+    }
+  }
+
+  button {
+    color: #ffffff;
+    background-color: #1cb841;
+    border: none;
+    margin-left: 20px;
+    padding: 8px 16px;
+
+    &:hover {
+      background-color: lighten(#1cb841, 10%);
+    }
+
+    .fa {
+      margin-right: 8px;
+    }
+  }
+}
