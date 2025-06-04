@@ -44,7 +44,8 @@
       "submitAction": "Submit",
       "submitAdd": "Submit",
       "submitUpdate": "Submit",
-      "submitQuery": "Submit"
+      "submitQuery": "Submit",
+      "applyChanges": "Apply Changes"
     },
     "common": {
       "actions": "Actions",
@@ -54,7 +55,8 @@
       "error": "Error",
       "loading": "Loading...",
       "success": "Success",
-      "warning": "Warning"
+      "warning": "Warning",
+      "unappliedChanges": "Please apply changes to activate your new settings."
     },
     "filter": {
       "searchPlaceholder": "Search...",
