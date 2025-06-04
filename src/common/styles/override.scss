@@ -70,11 +70,9 @@ Nav
 Logo
 */
 .restool-app .restool-header .logo-container {
-
     display: flex;
     justify-content: space-between;
     width: 100%;
-
 }
 
 /*
@@ -249,6 +247,34 @@ Page Header
 
 }
 
+/*
+Nav Pages
+*/
+.restool-app .app-content {
+
+    .auth-page,
+    .change-pwd-page {
+        font-family: "Plus Jakarta Sans", sans-serif;
+
+        .form-content {
+            .form-row {
+                label {
+                    font-size: 14px;
+                    text-transform: none;
+                    white-space: pre-line;
+                }
+            }
+
+            .buttons-wrapper {
+                .button {
+                    padding: 10px 30px;
+                    text-transform: none;
+                }
+            }
+        }
+    }
+}
+
 
 /*
 Table
@@ -291,10 +317,6 @@ Table
 
                 &:last-child {
                     border-top-right-radius: 8px;
-                }
-
-                .th-content .help-icon .help-text {
-                    font-family: 'Plus Jakarta Sans', sans-serif;
                 }
             }
 
@@ -372,9 +394,10 @@ Table
                     }
                 }
             }
-            
+
             // Hide up/down arrows for first/last rows
             tbody {
+
                 tr:first-child td .actions-wrapper button:has(i.fa-arrow-up),
                 tr:last-child td .actions-wrapper button:has(i.fa-arrow-down) {
                     pointer-events: none;

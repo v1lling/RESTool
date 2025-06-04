@@ -2,7 +2,7 @@
   "auth": {
     "changePassword": "Change Password",
     "labels": {
-      "confirmPassword": "Confirm New Password",
+      "confirmPassword": "Confirm\nNew Password",
       "newPassword": "New Password",
       "oldPassword": "Old Password",
       "password": "Password",
@@ -12,8 +12,8 @@
     "loginFailed": "Login failed",
     "logout": "Logout",
     "logoutFailed": "Logout failed",
-    "logoutSuccess": "Logged out successfully",
-    "passwordChangeRequired": "Password change required",
+    "logoutSuccess": "",
+    "passwordChangeRequired": "",
     "passwordChanged": "Password changed successfully",
     "passwordChangeFailed": "Password change failed",
     "passwordMismatch": "Confirmed password does not match",
