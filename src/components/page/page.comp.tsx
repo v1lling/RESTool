@@ -1018,6 +1018,7 @@ const PageComp = ({ context }: IProps) => {
                 headers: pageHeaders,
                 responseType: 'status'
               });
+              notificationService.success(translatePage('successMessages.applyChanges'));
               setLoading(false);
               getAllRequest();
             } catch (e) {

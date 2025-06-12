@@ -98,7 +98,8 @@
       "addItem": "",
       "customActions": "",
       "deleteItem": "",
-      "editItem": ""
+      "editItem": "",
+      "applyChanges": "Server has been restared successfully. The new settings are now active."
     }
   },
   "navigation": {
