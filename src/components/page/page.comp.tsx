@@ -1019,6 +1019,7 @@ const PageComp = ({ context }: IProps) => {
                 headers: pageHeaders,
                 responseType: 'status'
               });
+              toast.success(translatePage('successMessages.applyChanges'));
               setLoading(false);
               getAllRequest();
             } catch (e) {

@@ -99,7 +99,8 @@
       "addItem": "Item added successfully",
       "customActions": "Action completed successfully",
       "deleteItem": "Item deleted successfully",
-      "editItem": "Item updated successfully"
+      "editItem": "Item updated successfully",
+      "applyChanges": "Server has been restared successfully. The new settings are now active."
     }
   },
   "navigation": {
