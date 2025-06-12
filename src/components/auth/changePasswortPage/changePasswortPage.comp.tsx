@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { usePageTranslation } from '../../../hooks/usePageTranslation';
 import { Button } from '../../button/button.comp';
-import { toast } from 'react-toastify';
+import { notificationService } from '../../../services/notification.service';
 
 import './changePasswortPage.scss';
 import { withAppContext } from '../../withContext/withContext.comp';
+import { NotificationBanner } from '../../notificationBanner/notificationBanner.comp';
 import { IAppContext } from '../../app.context';
 
 interface IProps {
@@ -14,29 +15,34 @@ interface IProps {
 
 export const ChangePasswordPage = withAppContext(
   ({ context }: IProps) => {
-    const { replace } = useHistory();
+    const history = useHistory();
+    const location = useLocation();
     const [oldPwd, setOldPwd] = useState<string>('');
     const [newPwd, setNewPwd] = useState<string>('');
     const [confirmPwd, setConfirmPwd] = useState<string>('');
     const { authService } = context;
     const { translate } = usePageTranslation();
 
+    // Show notification if coming from login page
+    React.useEffect(() => {
+      const params = new URLSearchParams(location.search);
+      if (params.get('showPasswordMessage') === 'true') {
+        notificationService.info(translate('auth.passwordChangeRequired'));
+      }
+    }, [location.search, translate, history]);
+
     async function submitForm(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
       if (newPwd !== confirmPwd) {
-        toast.error(translate('auth.passwordMismatch'));
+        notificationService.error(translate('auth.passwordMismatch'));
         return;
       }
       try {
         await authService.changePassword(oldPwd, newPwd);
-        const successMessage = translate('auth.passwordChangeSuccess');
-        if (successMessage) {
-          toast.success(successMessage);
-        }
-        replace('/');
-      } catch (e) {
-          const errorMessage = translate('auth.passwordChangeFailed') + (e instanceof Error ? `: ${e.message}` : '');
-          toast.error(errorMessage);
+        history.replace('/');
+      } catch (error) {
+        const errorMessage = translate('auth.passwordChangeFailed') + (error instanceof Error ? `: ${error.message}` : '');
+        notificationService.error(errorMessage);
       }
     }
 
@@ -54,7 +60,7 @@ export const ChangePasswordPage = withAppContext(
 
     return (
       <div className="change-pwd-page">
-        <h3>{translate('auth.changePasswordHeading')}</h3>
+        {context.config?.notificationStyle === 'banner' && <NotificationBanner />}
         <form className='form-content' onSubmit={submitForm}>
           <div className='form-row row'>
             <label>{translate('auth.labels.oldPassword')}</label>
