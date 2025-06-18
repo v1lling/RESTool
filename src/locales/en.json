@@ -103,17 +103,17 @@
     }
   },
   "logs": {
-      "title": "Server Logs",
-      "description": "View server process logs",
-      "buttons": {
-        "startAutoRefresh": "Start Auto-Refresh",
-        "stopAutoRefresh": "Stop Auto-Refresh",
-        "downloadLogs": "Download Full Logs"
-      },
-      "emptyState": {
-        "title": "No Logs Available",
-        "description": "There are no logs to display at the moment. New logs will appear here automatically when they become available."
-      }
+    "title": "Server Logs",
+    "description": "View server process logs",
+    "buttons": {
+      "startAutoRefresh": "Start Auto-Refresh",
+      "stopAutoRefresh": "Stop Auto-Refresh",
+      "downloadLogs": "Download Full Logs"
+    },
+    "emptyState": {
+      "title": "No Logs Available",
+      "description": "There are no logs to display at the moment. New logs will appear here automatically when they become available."
+    }
   },
   "navigation": {
     "pages": "PAGES",
