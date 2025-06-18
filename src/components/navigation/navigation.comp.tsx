@@ -67,52 +67,56 @@ const NavigationComp = ({ context: { config, authService, loggedInUsername, setL
                   </NavLink>
               })
             }
+            <NavLink to="/logs" activeClassName="active" className="app-nav-link app-nav-link-logs"
+              onClick={() => setIsOpened(false)}>
+              <i className="fa fa-terminal" aria-hidden="true"></i>
+              <span className="nav-item-text">{translate('logs.title')}</span>
+            </NavLink>
           </div>
         </div>
 
         <div>
-
-        {!!loggedInUsername && (
-          <div className="app-nav-section">
-            {!!translate('navigation.userManagement') && (
-              <div className="app-nav-section-header">
-                {translate('navigation.userManagement')}
+          {!!loggedInUsername && (
+            <div className="app-nav-section">
+              {!!translate('navigation.userManagement') && (
+                <div className="app-nav-section-header">
+                  {translate('navigation.userManagement')}
+                </div>
+              )}
+              <div className="app-nav-logout">
+                <NavLink to="/change-password" className="app-nav-link app-nav-link-change-password">
+                  {config?.auth?.icons?.changePassword && (
+                    <i className={`fa fa-${config.auth.icons.changePassword}`} aria-hidden="true"></i>
+                  )}{' '}
+                  {translate('auth.changePassword')}
+                </NavLink>
+                <NavLink to="/login" onClick={logout} className="app-nav-link app-nav-link-logout">
+                  {config?.auth?.icons?.logout && (
+                    <i className={`fa fa-${config.auth.icons.logout}`} aria-hidden="true"></i>
+                  )}{' '}
+                  {translate('auth.logout')} ({loggedInUsername})
+                </NavLink>
               </div>
-            )}
-            <div className="app-nav-logout">
-              <NavLink to="/change-password" className="app-nav-link app-nav-link-change-password">
-                {config?.auth?.icons?.changePassword && (
-                  <i className={`fa fa-${config.auth.icons.changePassword}`} aria-hidden="true"></i>
-                )}{' '}
-                {translate('auth.changePassword')}
-              </NavLink>
-              <NavLink to="/login" onClick={logout} className="app-nav-link app-nav-link-logout">
-                {config?.auth?.icons?.logout && (
-                  <i className={`fa fa-${config.auth.icons.logout}`} aria-hidden="true"></i>
-                )}{' '}
-                {translate('auth.logout')} ({loggedInUsername})
-              </NavLink>
             </div>
-          </div>
-        )}
-        {!loggedInUsername && (
-          <div className="app-nav-section" />
-        )}
+          )}
+          {!loggedInUsername && (
+            <div className="app-nav-section" />
+          )}
 
-        {/* Uptrust Build Info */}
-        {buildInfo && (
-          <div className="app-nav-section">
-            <div className="app-version">
-              v. {buildInfo.version || 'dev'} 
-              <br />
-               {new Date(buildInfo.buildDate).toLocaleDateString(i18n.language, {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-              })}
+          {/* Uptrust Build Info */}
+          {buildInfo && (
+            <div className="app-nav-section">
+              <div className="app-version">
+                v. {buildInfo.version || 'dev'}
+                <br />
+                {new Date(buildInfo.buildDate).toLocaleDateString(i18n.language, {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                })}
+              </div>
             </div>
-          </div>
-        )}
+          )}
         </div>
       </div>
     </nav>

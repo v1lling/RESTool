@@ -5,6 +5,7 @@ import ConfigService from '../services/config.service';
 import { notificationService } from '../services/notification.service';
 import { IConfig, IConfigPage } from '../common/models/config.model';
 import { Page } from '../components/page/page.comp';
+import { LogViewerPage } from '../components/logViewer/logViewerPage.comp';
 import { Navigation } from '../components/navigation/navigation.comp';
 import { AppContext } from './app.context';
 import HttpService from '../services/http.service';
@@ -165,12 +166,13 @@ function App() {
                   <h1 title={appName} onClick={() => scrollToTop()}>{appName}</h1>
                   <Navigation />
                 </aside>
-                  <Switch>
-                    <Route exact path='/login' component={LoginPage} />
-                    <Route exact path='/change-password' component={ChangePasswordPage} />
-                    <Route exact path="/:page" component={Page} />
-                    <Redirect path="/" to={`/${config?.pages?.[0]?.id || '1'}`} />
-                  </Switch>
+                <Switch>
+                  <Route exact path='/login' component={LoginPage} />
+                  <Route exact path='/change-password' component={ChangePasswordPage} />
+                  <Route exact path='/logs' component={LogViewerPage} />
+                  <Route exact path="/:page" component={Page} />
+                  <Redirect path="/" to={`/${config?.pages?.[0]?.id || '1'}`} />
+                </Switch>
               </div>
               {config.notificationStyle !== 'banner' && (
                 <ToastContainer position={toast.POSITION.TOP_CENTER} autoClose={4000} draggable={false} />
