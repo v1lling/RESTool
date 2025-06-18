@@ -137,7 +137,7 @@ const LogViewerComp: React.FC<IProps> = ({ context }) => {
           {translate('logs.buttons.downloadLogs')}
         </button>
       </div>
-      <div className="log-viewer__content" ref={contentRef} onScroll={handleScroll}>
+      <div className="log-viewer__wrapper" ref={contentRef} onScroll={handleScroll}>
         {logs.length > 0 ? (
           logs.map((log, index) => (
             <div key={index} className="log-viewer__entry">
