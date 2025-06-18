@@ -105,7 +105,7 @@
   },
   "logs": {
       "title": "Server Logs",
-      "description": "View Uptrust server process logs",
+      "description": "View server process logs",
       "buttons": {
         "startAutoRefresh": "Start Auto-Refresh",
         "stopAutoRefresh": "Stop Auto-Refresh",
