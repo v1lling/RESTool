@@ -101,7 +101,7 @@ Navigation
                     line-height: 14px;
 
                     i.fa {
-                        &::before {
+                        &:not(.fa-terminal)::before {
                             content: '';
                         }
 
