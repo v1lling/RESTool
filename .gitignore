@@ -6,3 +6,4 @@ public/config.json
 public/config.js
 public/static/js/config.js
 build/
+src/version.ts
