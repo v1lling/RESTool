@@ -3,6 +3,7 @@ import React from 'react';
 import './button.scss';
 
 interface IProps {
+  id?: string
   children: any
   type?: 'submit' | 'button' | 'reset'
   title?: string

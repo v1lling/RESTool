@@ -69,7 +69,7 @@ export const Cards = withAppContext(({ context, items, fields, callbacks, custom
       
       switch (origField.type) {
         case "text":
-          return <span>{translatedValue || value}</span>;
+          return <span data-value={value}>{translatedValue || value}</span>;
       case "boolean":
         return <div className={`bool ${value ? "true" : "false"}`}></div>;
       case "image":
@@ -117,7 +117,7 @@ export const Cards = withAppContext(({ context, items, fields, callbacks, custom
     return (
       <div className="actions-wrapper">
         {callbacks.put && (
-          <Button onClick={() => callbacks.put?.(item)} title={editLabel}>
+          <Button id={`edit_${cardIdx}`} onClick={() => callbacks.put?.(item)} title={editLabel}>
                 <i className={`fa fa-${context.activePage?.methods?.put?.icon || 'pencil-square-o'}`} aria-hidden="true"></i>
           </Button>
         )}
