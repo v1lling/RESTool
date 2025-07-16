@@ -32,6 +32,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build-lib": "tsc --project ./tsconfig.lib.json",
+    "build-test": "react-scripts build && cp -rf ./build/* target/classes/META-INF/resources",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "npm run build && tsc --project ./tsconfig.lib.json",
