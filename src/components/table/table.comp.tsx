@@ -71,7 +71,7 @@ export const Table = withAppContext(({ context, items, fields, pagination, callb
       
       switch (origField.type) {
         case "text":
-          return <span>{translatedValue || value}</span>;
+          return <span data-value={value}>{translatedValue || value}</span>;
       case "boolean":
         return <div className={`bool ${value ? "true" : "false"}`}></div>;
       case "image":
