@@ -321,8 +321,22 @@ export const FormPopup = withAppContext(({ context, title, type, successMessage,
                     );
                   })
                 }
-                <div className="buttons-wrapper center">
-                  <Button type="submit" onClick={submitForm}>
+                <div className="buttons-wrapper">
+                  <Button 
+                    type="button" 
+                    className="cancel-button"
+                    onClick={() => {
+                      setFormErrorMessage(null);
+                      closeCallback(false);
+                    }}
+                  >
+                    {customLabels?.buttons?.closeForm || translatePage('buttons.cancel')}
+                  </Button>
+                  <Button 
+                    type="submit" 
+                    className="submit-button"
+                    onClick={submitForm}
+                  >
                     {(customLabels?.buttons?.submitItem ||
                       type === 'add' ? translatePage('buttons.submitAdd') :
                       type === 'action' ? translatePage('buttons.submitAction') :
