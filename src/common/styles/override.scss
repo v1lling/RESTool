@@ -470,7 +470,7 @@ body {
 // Modals & Popups
 
 #popup-portal {
-        font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
 
     .form-popup {
         .overlay {
@@ -480,7 +480,10 @@ body {
         .popup-content {
             h2 {
                 margin: 0;
-                font-size: 18px;
+                text-align: start;
+                font-size: 14px;
+                padding: 18px 18px;
+                font-weight: 600;
             }
 
             section {
@@ -491,6 +494,7 @@ body {
 
             .form-row {
                 padding: 6px 16px;
+
                 label {
                     width: 230px;
                     text-transform: none;

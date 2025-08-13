@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import { withAppContext } from '../withContext/withContext.comp';
 import { IAppContext } from '../app.context';
 import { usePageTranslation } from '../../hooks/usePageTranslation';
@@ -14,16 +14,22 @@ interface LogEntry {
 
 interface IProps {
   context: IAppContext;
+  initialPollingState?: boolean;
 }
 
-const LogViewerComp: React.FC<IProps> = ({ context }) => {
+const LogViewerComp = forwardRef<any, IProps>(({ context, initialPollingState = true }, ref) => {
   const [logs, setLogs] = useState<LogEntry[]>([]);
-  const [isPolling, setIsPolling] = useState(true);
+  const [isPolling, setIsPolling] = useState(initialPollingState);
   const [autoScroll, setAutoScroll] = useState(true);
-  const [lines, setLines] = useState(100);
   const contentRef = useRef<HTMLDivElement>(null);
   const { httpService } = context;
   const { translate } = usePageTranslation();
+
+  useImperativeHandle(ref, () => ({
+    setPollingState: (polling: boolean) => {
+      setIsPolling(polling);
+    }
+  }));
 
   const fetchLogs = async () => {
     try {
@@ -71,7 +77,7 @@ const LogViewerComp: React.FC<IProps> = ({ context }) => {
         clearInterval(pollInterval);
       }
     };
-  }, [isPolling, lines]);
+  }, [isPolling]);
 
   useEffect(() => {
     if (autoScroll && contentRef.current) {
@@ -85,13 +91,6 @@ const LogViewerComp: React.FC<IProps> = ({ context }) => {
     setAutoScroll(isScrolledToBottom);
   };
 
-  const togglePolling = () => {
-    setIsPolling(!isPolling);
-  };
-
-  const downloadLogs = () => {
-    window.open('/api/v1/logs/download', '_blank');
-  };
 
   const getLevelClass = (level: string): string => {
     switch (level.trim()) {
@@ -121,22 +120,6 @@ const LogViewerComp: React.FC<IProps> = ({ context }) => {
 
   return (
     <div className="log-viewer">
-      <div className="log-viewer__controls">
-        <button 
-          className={`log-viewer__button ${isPolling ? 'active' : ''}`}
-          onClick={togglePolling}
-        >
-          {isPolling ? translate('logs.buttons.stopAutoRefresh') : translate('logs.buttons.startAutoRefresh')}
-        </button>
-        <button 
-          className="log-viewer__button"
-          onClick={() => {
-            downloadLogs();
-          }}
-        >
-          {translate('logs.buttons.downloadLogs')}
-        </button>
-      </div>
       <div className="log-viewer__wrapper" ref={contentRef} onScroll={handleScroll}>
         {logs.length > 0 ? (
           logs.map((log, index) => (
@@ -154,6 +137,6 @@ const LogViewerComp: React.FC<IProps> = ({ context }) => {
       </div>
     </div>
   );
-};
+});
 
 export default withAppContext(LogViewerComp);

@@ -995,7 +995,10 @@ const PageComp = ({ context }: IProps) => {
           >
             {activePage?.singleItemPage && putConfig && items.length > 0 ? (
               // Edit button - no icon, just text
-              customLabels?.buttons?.editItem || translatePage('buttons.editItem')
+              <>
+                <i className={`fa fa-${putConfig?.icon || 'pencil'}`} aria-hidden="true"></i> {customLabels?.buttons?.editItem || translatePage('buttons.editItem')}
+              </>
+
             ) : (
               // Add button - with icon
               <>

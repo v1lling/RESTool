@@ -190,3 +190,75 @@
     background-color: #a0a0a0;
   }
 }
+
+// Log viewer page header buttons
+.log-viewer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  .download-button {
+    background: transparent;
+    color: #68727d;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    
+    i {
+      font-size: 14px;
+    }
+    
+    &:hover {
+      background: #F3F4F6;
+      color: #0A77FF;
+    }
+    
+    &:active {
+      background: #E5E7EB;
+      transform: translateY(1px);
+    }
+  }
+  
+  .auto-refresh-button {
+    background: transparent;
+    color: #68727d;
+    border: 1px solid #eaecf0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: #F3F4F6;
+      border-color: #0A77FF;
+      color: #0A77FF;
+    }
+    
+    &.active {
+      background: #0A77FF;
+      color: white;
+      border-color: #0A77FF;
+      
+      &:hover {
+        background: #2563EB;
+        border-color: #2563EB;
+      }
+      
+      &:active {
+        background: #040505;
+        border-color: #040505;
+      }
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
