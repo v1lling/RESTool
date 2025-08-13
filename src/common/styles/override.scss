@@ -30,6 +30,30 @@
     --uptrust-enabled-light: #e9f8f1;
     --uptrust-disabled: #e33b32;
     --uptrust-disabled-light: #ffefee;
+    
+    // Auth page colors
+    --auth-background: #F8F9FA;
+    --auth-card-background: white;
+    --auth-heading-color: #1F2937;
+    --auth-label-color: #374151;
+    --auth-input-border: #E5E7EB;
+    --auth-input-text: #1F2937;
+    --auth-placeholder: #9CA3AF;
+    --auth-button-primary: #0A77FF;
+    --auth-button-hover: #2563EB;
+    --auth-button-active: #040505;
+    --auth-focus-ring: rgba(59, 130, 246, 0.1);
+    
+    // Notification banner colors
+    --notification-success-border: #A9E3C7;
+    --notification-success-bg: #E9F8F1;
+    --notification-success-text: #27B973;
+    --notification-error-border: #FFADB3;
+    --notification-error-bg: #FFF1F2;
+    --notification-error-text: #DC3644;
+    --notification-info-border: #90C2FF;
+    --notification-info-bg: #ECF4FC;
+    --notification-info-text: #3982DC;
 }
 
 
@@ -109,7 +133,7 @@
 
             // Custom icon setup
             i.fa {
-                &:not(.fa-terminal, .fa-envelope)::before {
+                &:not(.fa-envelope)::before {
                     content: '';
                 }
                 
@@ -158,6 +182,17 @@
 
                 &.active i.fa {
                     background-image: url('/assets/icons/globe.active.svg');
+                }
+            }
+
+            // Log
+            &.app-nav-link-logs {
+                i.fa {
+                    background-image: url('/assets/icons/log.svg');
+                }
+
+                &.active i.fa {
+                    background-image: url('/assets/icons/log.active.svg');
                 }
             }
 
@@ -219,27 +254,6 @@
     }
 }
 
-
-// Auth & Account Pages
-.restool-app .app-content {
-    .auth-page,
-    .change-pwd-page {
-        font-family: "Plus Jakarta Sans", sans-serif;
-
-        .form-content {
-            .form-row label {
-                font-size: 14px;
-                text-transform: none;
-                white-space: pre-line;
-            }
-
-            .buttons-wrapper .button {
-                padding: 10px 30px;
-                text-transform: none;
-            }
-        }
-    }
-}
 
 
 // Tables
@@ -390,6 +404,192 @@
                     width: 230px;
                     text-transform: none;
                 }
+            }
+        }
+    }
+}
+
+// Notifcation Banner
+.notification-banner {
+    border-radius: 8px;
+    padding: 12px 16px;
+  &.success {
+    border-color: var(--notification-success-border);
+    background-color: var(--notification-success-bg);
+    color: var(--notification-success-text);
+  }
+  &.error {
+    border: 1px solid var(--notification-error-border);
+    background-color: var(--notification-error-bg);
+    color: var(--notification-error-text);
+  }
+  &.info {
+    border: 1px solid var(--notification-info-border);
+    background-color: var(--notification-info-bg);
+    color: var(--notification-info-text);
+  }
+}
+
+// Auth & Account Pages
+.restool-app .app-content {
+    // Shared styles for both auth pages
+    .auth-page,
+    .change-pwd-page {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: var(--auth-background);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        min-height: auto;
+        
+        .notification-banner {
+            position: absolute;
+            top: 12px;
+            left: 40px;
+            width: calc(100% - 80px);
+        }
+        
+        .form-content {
+            width: 480px;
+            min-height: auto;
+            max-width: 90%;
+            background: var(--auth-card-background) url('/assets/images/auth_background.png') center center;
+            background-size: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 48px 40px;
+            position: relative;
+            z-index: 1;
+            height: auto;
+            
+            // Logo container
+            &::before {
+                content: '';
+                display: block;
+                width: 180px;
+                height: 50px;
+                margin: 0 auto 30px;
+                background-image: url('/assets/images/logo.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+            }
+            
+            .form-row {
+                margin-bottom: 20px;
+                text-align: left;
+                display: block;
+                
+                &:first-child {
+                    margin-top: 0;
+                }
+                
+                label {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: var(--auth-label-color);
+                    text-transform: none;
+                    display: block;
+                    margin-bottom: 8px;
+                    width: 100%;
+                }
+                
+                input[type="text"],
+                input[type="password"] {
+                    width: 100%;
+                    padding: 12px 16px;
+                    border: 1px solid var(--auth-input-border);
+                    border-radius: 8px;
+                    font-size: 15px;
+                    color: var(--auth-input-text);
+                    background: var(--auth-card-background);
+                    box-sizing: border-box;
+                    transition: all 0.2s ease;
+                    
+                    &::placeholder {
+                        color: var(--auth-placeholder);
+                        font-size: 15px;
+                    }
+                    
+                    &:focus {
+                        outline: none;
+                        border-color: var(--auth-button-primary);
+                        box-shadow: 0 0 0 3px var(--auth-focus-ring);
+                    }
+                }
+            }
+
+            .buttons-wrapper {
+                margin-top: 8px;
+                padding: 0;
+                width: 100%;
+                display: block;
+                
+                &.center {
+                    display: block;
+                    text-align: left;
+                }
+                
+                .button {
+                    width: 100%;
+                    display: block;
+                    padding: 14px 24px;
+                    background: var(--auth-button-primary);
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    text-transform: none;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                    margin: 0;
+                    
+                    &:hover {
+                        background: var(--auth-button-hover);
+                        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                    }
+                    
+                    &:active {
+                        background: var(--auth-button-active);
+                        transform: translateY(1px);
+                    }
+                }
+            }
+        }
+    }
+    
+    // Login page specific
+    .auth-page {
+        .form-content {
+            .form-row:first-child::before {
+                content: "Let's Sign In";
+                display: block;
+                font-size: 24px;
+                font-weight: 600;
+                color: var(--auth-heading-color);
+                margin-bottom: 48px;
+                text-align: center;
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+        }
+    }
+    
+    // Change password page specific
+    .change-pwd-page {
+        .form-content {
+            .form-row:first-child::before {
+                content: "Reset password";
+                display: block;
+                font-size: 24px;
+                font-weight: 600;
+                color: var(--auth-heading-color);
+                margin-bottom: 48px;
+                text-align: center;
+                font-family: "Plus Jakarta Sans", sans-serif;
             }
         }
     }
