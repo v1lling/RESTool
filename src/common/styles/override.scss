@@ -379,6 +379,26 @@ body {
             cursor: default;
         }
     }
+
+    // Help text tooltip improvements
+    th .th-content .help-icon .help-text {
+        background-color: white;
+        color: var(--uptrust-second-gray);
+        border: 1px solid var(--uptrust-border-gray);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        padding: 10px 12px;
+        border-radius: 6px;
+        max-width: 280px;
+        line-height: 1.5;
+        
+        &::after {
+            border-color: white transparent transparent transparent;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+    }
 }
 
 
@@ -395,9 +415,19 @@ body {
             margin: 0;
             border: 1px solid var(--uptrust-border-gray);
             border-radius: 8px;
-
+            overflow: hidden;
             >.card-row:nth-child(even) {
                 background-color: var(--uptrust-table-row-background-gray);
+            }
+            
+            >.card-row:first-child {
+                border-top-left-radius: 7px;
+                border-top-right-radius: 7px;
+            }
+            
+            >.card-row:last-child {
+                border-bottom-left-radius: 7px;
+                border-bottom-right-radius: 7px;
             }
 
             .card-row {
