@@ -13,10 +13,10 @@ export const UnappliedChangesBanner = ({ onApply }: Props) => {
     <div className="unapplied-changes-banner">
       <div className="banner-content">
         <span className="warning-text">
-          <i className="fa fa-warning" aria-hidden="true"></i>
+          <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
           {translate('global.common.unappliedChanges')}
         </span>
-        <Button onClick={onApply} aria-label={translate('global.aria.applyChanges')}>
+        <Button className="apply-changes-button" onClick={onApply} aria-label={translate('global.aria.applyChanges')}>
           {translate('global.buttons.applyChanges')}
         </Button>
       </div>

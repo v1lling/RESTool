@@ -928,6 +928,29 @@ const PageComp = ({ context }: IProps) => {
     return (
       <React.Fragment>
         {config?.notificationStyle === 'banner' && <NotificationBanner />}
+        {hasUnappliedChanges && (
+          <UnappliedChangesBanner
+            onApply={async () => {
+              try {
+                setHasUnappliedChanges(false);
+                setLoading(true);
+                const response = await httpService.fetch({
+                  method: 'post',
+                  origUrl: '/uptrust/apply',
+                  headers: pageHeaders,
+                  responseType: 'status'
+                });
+                notificationService.success(translatePage('successMessages.applyChanges'));
+                setLoading(false);
+                getAllRequest();
+              } catch (e) {
+                console.log(e);
+                notificationService.error((e as Error).message);
+                setLoading(false);
+              }
+            }}
+          />
+        )}
         <QueryParams
           initialParams={queryParams}
           paginationConfig={paginationConfig}
@@ -1020,29 +1043,6 @@ const PageComp = ({ context }: IProps) => {
           rawData={openedPopup.rawData}
           getSingleConfig={openedPopup.getSingleConfig}
           methodConfig={openedPopup.config}
-        />
-      )}
-      {hasUnappliedChanges && (
-        <UnappliedChangesBanner
-          onApply={async () => {
-            try {
-              setHasUnappliedChanges(false);
-              setLoading(true);
-              const response = await httpService.fetch({
-                method: 'post',
-                origUrl: '/uptrust/apply',
-                headers: pageHeaders,
-                responseType: 'status'
-              });
-              notificationService.success(translatePage('successMessages.applyChanges'));
-              setLoading(false);
-              getAllRequest();
-            } catch (e) {
-              console.log(e);
-              notificationService.error((e as Error).message);
-              setLoading(false);
-            }
-          }}
         />
       )}
     </div>
