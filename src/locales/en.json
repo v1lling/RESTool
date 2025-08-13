@@ -36,6 +36,7 @@
     "buttons": {
       "addArrayItem": "Add Item",
       "addItem": "Add Item",
+      "cancel": "Cancel",
       "clearInput": "Clear",
       "closeForm": "Close",
       "deleteItem": "Delete",
@@ -99,16 +100,16 @@
       "customActions": "",
       "deleteItem": "",
       "editItem": "",
-      "applyChanges": "Server has been restared successfully. The new settings are now active."
+      "applyChanges": "The server has been successfully restarted. The new settings are now active."
     }
   },
   "logs": {
-    "title": "Server Logs",
-    "description": "View server process logs",
+    "title": "Server Log",
+    "description": "View server process log",
     "buttons": {
       "startAutoRefresh": "Start Auto-Refresh",
       "stopAutoRefresh": "Stop Auto-Refresh",
-      "downloadLogs": "Download Full Logs"
+      "downloadLogs": "Download Full Log"
     },
     "emptyState": {
       "title": "No Logs Available",
