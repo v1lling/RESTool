@@ -419,11 +419,15 @@
 
                 // Boolean badges in cards only
                 .bool {
+                    height: auto;
+                    background: none;
                     align-self: center;
                     display: inline-block;
+
                     &::before {
                         display: none;
                     }
+
                     &.true::after {
                         content: "Enabled";
                         display: inline-block;
@@ -437,6 +441,7 @@
                         color: var(--uptrust-enabled);
                         border: 1px solid var(--uptrust-enabled);
                     }
+
                     &.false::after {
                         content: "Disabled";
                         display: inline-block;
