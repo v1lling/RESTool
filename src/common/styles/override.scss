@@ -386,6 +386,7 @@ body {
 .restool-app .app-content .app-page-content {
     .cards-wrapper {
         justify-content: start;
+        margin-bottom: 20px;
 
         .card {
             width: 100%;
@@ -494,6 +495,14 @@ body {
 
             .form-row {
                 padding: 6px 16px;
+
+                // Hidden fields should not take up visual space
+                &:has(input[type="hidden"]) {
+                    padding: 0;
+                    margin: 0;
+                    height: 0;
+                    overflow: hidden;
+                }
 
                 label {
                     width: 230px;
