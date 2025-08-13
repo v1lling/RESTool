@@ -114,6 +114,11 @@ export const Cards = withAppContext(({ context, items, fields, callbacks, custom
   }
 
   function renderActions(item: any, cardIdx: number) {
+    // Hide actions for single-item pages (edit is handled in page header)
+    if (context.activePage?.singleItemPage) {
+      return null;
+    }
+    
     return (
       <div className="actions-wrapper">
         {callbacks.put && (

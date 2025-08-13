@@ -195,6 +195,11 @@
         "icon": {
           "type": "string",
           "description": "Font Awesome icon name without the 'fa-' prefix to display next to the page name in navigation. For example: 'cog', 'user', 'key', etc."
+        },
+        "singleItemPage": {
+          "type": "boolean",
+          "description": "When true, indicates this page manages a single configuration item. This automatically moves the edit button from cards to the page header and hides card action buttons for a cleaner interface. Typically used for settings or configuration pages.",
+          "default": false
         }
       },
       "required": [

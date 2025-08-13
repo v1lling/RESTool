@@ -117,6 +117,7 @@ export interface IConfigPage {
   customActions?: IConfigCustomAction[];
   customLabels?: ICustomLabels;
   customLink?: string;
+  singleItemPage?: boolean;
 }
 
 export interface IConfigMethods {

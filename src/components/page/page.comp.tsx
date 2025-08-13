@@ -722,7 +722,7 @@ const PageComp = ({ context }: IProps) => {
     if (!filteredItems.length) {
       return (
         <div className="app-error">
-          { translatePage('common.emptyResults') }
+          {translatePage('common.emptyResults')}
         </div>
       );
     }
@@ -975,22 +975,35 @@ const PageComp = ({ context }: IProps) => {
           <h2>{translatePage('title') || activePage?.name} </h2>
           <h4>{translatePage('description') || activePage?.description}</h4>
         </hgroup>
-        {postConfig && (
+        {/* Show button: edit for single-item pages, add for regular pages */}
+        {(activePage?.singleItemPage && putConfig && items.length > 0) || postConfig ? (
           <Button
             className="add-item"
-            onClick={() =>
-              setOpenedPopup({
-                type: "add",
-                title: addItemFormTitle,
-                successMessage: addItemSuccessMessage,
-                config: postConfig,
-                submitCallback: addItem,
-              })
-            }
+            onClick={() => {
+              if (activePage?.singleItemPage && putConfig && items.length > 0) {
+                openEditPopup(items[0]);
+              } else if (postConfig) {
+                setOpenedPopup({
+                  type: "add",
+                  title: addItemFormTitle,
+                  successMessage: addItemSuccessMessage,
+                  config: postConfig,
+                  submitCallback: addItem,
+                });
+              }
+            }}
           >
-            <i className={`fa fa-${postConfig?.icon || 'plus'}`} aria-hidden="true"></i> {addItemLabel}
+            {activePage?.singleItemPage && putConfig && items.length > 0 ? (
+              // Edit button - no icon, just text
+              customLabels?.buttons?.editItem || translatePage('buttons.editItem')
+            ) : (
+              // Add button - with icon
+              <>
+                <i className={`fa fa-${postConfig?.icon || 'plus'}`} aria-hidden="true"></i> {addItemLabel}
+              </>
+            )}
           </Button>
-        )}
+        ) : null}
       </header>
       <main className="app-page-content">{renderPageContent()}</main>
       {openedPopup && (
