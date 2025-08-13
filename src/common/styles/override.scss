@@ -241,6 +241,15 @@ body {
         font-size: 14px;
         border-radius: 8px;
         font-weight: 500;
+        
+        &:hover {
+            background: var(--uptrust-button-hover);
+            border-color: var(--uptrust-button-hover);
+        }
+        
+        &:active {
+            background: var(--uptrust-button-active);
+        }
     }
 }
 
