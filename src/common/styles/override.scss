@@ -131,17 +131,16 @@ body {
 
         .app-nav-link {
             align-items: end;
-            line-height: 14px;
+            line-height: 16px;
 
             // Custom icon setup
             i.fa {
                 &::before {
                     content: '';
                 }
-
                 display: inline-block;
-                width: 14px;
-                height: 14px;
+                width: 16px;
+                height: 16px;
                 margin-right: 1px;
                 margin-left: 1px;
                 background-size: contain;
@@ -149,6 +148,7 @@ body {
                 background-position: center;
                 vertical-align: middle;
             }
+
 
             // Settings
             &.app-nav-link-uptrust {
@@ -163,12 +163,16 @@ body {
 
             // Key Sources
             &.app-nav-link-uptrust-keysources {
+                padding-top: 7px;
+                padding-bottom: 9px;
+                gap: 6px;
+                align-items: center;
                 i.fa {
                     background-image: url('/assets/icons/key.svg');
-                    height: 16px;
-                    width: 16px;
                     margin-right: 0px;
                     margin-left: 0px;
+                    width: 20px;
+                    height: 20px;
                 }
 
                 &.active i.fa {
@@ -189,7 +193,15 @@ body {
 
             // Mail Server
             &.app-nav-link-mailserver-settings {
+                padding-top: 7px;
+                padding-bottom: 9px;
+                gap: 8px;
+                align-items: center;
                 i.fa {
+                    margin-right: 0px;
+                    margin-left: 0px;
+                    width: 18px;
+                    height: 18px;
                     background-image: url('/assets/icons/mail.svg');
                 }
 
@@ -252,12 +264,12 @@ body {
         font-size: 14px;
         border-radius: 8px;
         font-weight: 500;
-        
+
         &:hover {
             background: var(--uptrust-button-hover);
             border-color: var(--uptrust-button-hover);
         }
-        
+
         &:active {
             background: var(--uptrust-button-active);
         }
@@ -413,7 +425,7 @@ body {
         border-radius: 6px;
         max-width: 280px;
         line-height: 1.5;
-        
+
         &::after {
             border-color: white transparent transparent transparent;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
@@ -436,15 +448,16 @@ body {
             border: 1px solid var(--uptrust-border-gray);
             border-radius: 8px;
             overflow: hidden;
+
             >.card-row:nth-child(even) {
                 background-color: var(--uptrust-table-row-background-gray);
             }
-            
+
             >.card-row:first-child {
                 border-top-left-radius: 7px;
                 border-top-right-radius: 7px;
             }
-            
+
             >.card-row:last-child {
                 border-bottom-left-radius: 7px;
                 border-bottom-right-radius: 7px;
@@ -549,7 +562,7 @@ body {
                 flex: 1;
                 min-height: 0;
                 overflow-y: auto;
-                
+
                 form {
                     display: flex;
                     flex-direction: column;
@@ -584,16 +597,16 @@ body {
                     background-color: white;
                     cursor: pointer;
                     transition: all 0.2s ease;
-                    
+
                     &:checked {
                         background-color: var(--uptrust-button-primary);
                         border-color: var(--uptrust-button-primary);
                     }
-                    
+
                     &:hover {
                         border-color: var(--uptrust-button-hover);
                     }
-                    
+
                     &:focus {
                         outline: none;
                         box-shadow: 0 0 0 3px rgba(10, 119, 255, 0.1);
