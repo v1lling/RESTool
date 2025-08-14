@@ -135,7 +135,7 @@ body {
 
             // Custom icon setup
             i.fa {
-                &:not(.fa-envelope)::before {
+                &::before {
                     content: '';
                 }
 
@@ -184,6 +184,17 @@ body {
 
                 &.active i.fa {
                     background-image: url('/assets/icons/globe.active.svg');
+                }
+            }
+
+            // Mail Server
+            &.app-nav-link-mailserver-settings {
+                i.fa {
+                    background-image: url('/assets/icons/mail.svg');
+                }
+
+                &.active i.fa {
+                    background-image: url('/assets/icons/mail.active.svg');
                 }
             }
 
