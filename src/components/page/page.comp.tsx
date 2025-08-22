@@ -999,12 +999,12 @@ const PageComp = ({ context }: IProps) => {
           <h4>{translatePage('description') || activePage?.description}</h4>
         </hgroup>
         {/* Show button: edit for single-item pages, add for regular pages */}
-        {(activePage?.singleItemPage && putConfig && items.length > 0) || postConfig ? (
+        {(activePage?.singleItemPage && putConfig) || postConfig ? (
           <Button
             className="add-item"
             onClick={() => {
-              if (activePage?.singleItemPage && putConfig && items.length > 0) {
-                openEditPopup(items[0]);
+              if (activePage?.singleItemPage && putConfig) {
+                openEditPopup(items.length > 0 ? items[0] : {});
               } else if (postConfig) {
                 setOpenedPopup({
                   type: "add",
@@ -1016,7 +1016,7 @@ const PageComp = ({ context }: IProps) => {
               }
             }}
           >
-            {activePage?.singleItemPage && putConfig && items.length > 0 ? (
+            {activePage?.singleItemPage && putConfig ? (
               // Edit button - no icon, just text
               <>
                 <i className={`fa fa-${putConfig?.icon || 'pencil'}`} aria-hidden="true"></i> {customLabels?.buttons?.editItem || translatePage('buttons.editItem')}

@@ -9,7 +9,7 @@ interface LogEntry {
   level?: string;
   logger?: string;
   content?: string;
-  raw: string;
+  originalMessage?: string;
 }
 
 interface IProps {
@@ -39,23 +39,8 @@ const LogViewerComp = forwardRef<any, IProps>(({ context, initialPollingState = 
       });
 
       if (result?.status === 'success' && Array.isArray(result.data)) {
-        const parsedLogs = result.data.map((log: { message: string }) => {
-          // Example: 14:24:01.729 [INFO ] o.a.j.m.l.AbstractStateMailetProcessor - Matcher All instantiated.
-          const match = log.message.match(/(\d{2}:\d{2}:\d{2}\.\d{3})\s+\[(\w+)\s*\]\s+([^-]+)-\s*(.*)/);
-          
-          if (match) {
-            const [, timestamp, level, logger, content] = match;
-            return {
-              timestamp,
-              level,
-              logger,
-              content,
-              raw: log.message
-            };
-          }
-          return { raw: log.message };
-        });
-        setLogs(parsedLogs);
+        // Backend now returns structured log entries, no parsing needed
+        setLogs(result.data);
       }
     } catch (error) {
       console.error('Error fetching logs:', error);
@@ -115,7 +100,7 @@ const LogViewerComp = forwardRef<any, IProps>(({ context, initialPollingState = 
         </>
       );
     }
-    return <span className="log-viewer__message">{log.raw}</span>;
+    return <span className="log-viewer__message">{log.originalMessage}</span>;
   };
 
   return (
