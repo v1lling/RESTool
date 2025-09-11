@@ -27,6 +27,7 @@ import {
 } from "../../common/models/states.model";
 import { withAppContext } from "../withContext/withContext.comp";
 import { NotificationBanner } from "../notificationBanner/notificationBanner.comp";
+import { ServerStatusBanner } from "../serverStatusBanner/serverStatusBanner.comp";
 import { Loader } from "../loader/loader.comp";
 import { dataHelpers } from "../../helpers/data.helpers";
 import { paginationHelpers } from "../../helpers/pagination.helpers";
@@ -219,6 +220,7 @@ const PageComp = ({ context }: IProps) => {
   const [items, setItems] = useState<any[]>([]);
   const [filter, setFilter] = useState<string>("");
   const [hasUnappliedChanges, setHasUnappliedChanges] = useState<boolean>(false);
+  const [serverStatus, setServerStatus] = useState<string | null>(null);
 
   function refreshPageData() {
     if (pagination?.type === "infinite-scroll") {
@@ -366,6 +368,11 @@ const PageComp = ({ context }: IProps) => {
     // Check for unapplied changes flag in response
     if (result.hasUnappliedChanges !== undefined) {
       setHasUnappliedChanges(result.hasUnappliedChanges);
+    }
+
+    // Check for server status in response
+    if (result.uptrustServerStatus !== undefined) {
+      setServerStatus(result.uptrustServerStatus);
     }
 
     let extractedData = dataHelpers.extractDataByDataPath(
@@ -927,6 +934,9 @@ const PageComp = ({ context }: IProps) => {
 
     return (
       <React.Fragment>
+        {serverStatus && serverStatus !== 'RUNNING' && (
+          <ServerStatusBanner serverStatus={serverStatus as 'RUNNING' | 'NOT_RUNNING' | 'FAILED' | 'INITIALIZING'} />
+        )}
         {config?.notificationStyle === 'banner' && <NotificationBanner />}
         {hasUnappliedChanges && (
           <UnappliedChangesBanner

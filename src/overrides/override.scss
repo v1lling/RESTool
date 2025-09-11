@@ -738,7 +738,7 @@ body {
     text-align: left;
 
     &.success {
-        border-color: var(--notification-success-border);
+        border: 1px solid var(--notification-success-border);
         background-color: var(--notification-success-bg);
         color: var(--notification-success-text);
     }

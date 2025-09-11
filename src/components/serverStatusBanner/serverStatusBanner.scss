@@ -1,0 +1,42 @@
+@import "../../common/styles/vars.scss";
+
+.server-status-banner {
+  // Use the same styling as notification banners from override.scss
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  white-space: break-spaces;
+  text-align: left;
+
+  .banner-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .fa {
+    margin-right: 8px;
+  }
+
+  // Failed state - Error (matching notification banner styling)
+  &.failed {
+    border: 1px solid var(--notification-error-border, #FFADB3);
+    background-color: var(--notification-error-bg, #FFF1F2);
+    color: var(--notification-error-text, #DC3644);
+  }
+
+  // Not running state - Also error (since it's a problem state)
+  &.not-running {
+    border: 1px solid var(--notification-error-border, #FFADB3);
+    background-color: var(--notification-error-bg, #FFF1F2);
+    color: var(--notification-error-text, #DC3644);
+  }
+
+  // Initializing state - Info (matching notification banner styling)
+  &.initializing {
+    border: 1px solid var(--notification-info-border, #90C2FF);
+    background-color: var(--notification-info-bg, #ECF4FC);
+    color: var(--notification-info-text, #3982DC);
+  }
+}
