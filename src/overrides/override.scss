@@ -521,7 +521,7 @@ body {
                     }
 
                     &.true::after {
-                        content: "Enabled";
+                        content: var(--status-enabled-text, "Enabled");
                         display: inline-block;
                         padding: 4px 12px;
                         border-radius: 12px;
@@ -535,7 +535,7 @@ body {
                     }
 
                     &.false::after {
-                        content: "Disabled";
+                        content: var(--status-disabled-text, "Disabled");
                         display: inline-block;
                         padding: 4px 12px;
                         border-radius: 12px;
@@ -881,7 +881,7 @@ body {
     .auth-page {
         .form-content {
             .form-row:first-child::before {
-                content: "Let's Sign In";
+                content: var(--auth-sign-in-heading, "Let's Sign In");
                 display: block;
                 font-size: 24px;
                 font-weight: 600;
@@ -897,7 +897,7 @@ body {
     .change-pwd-page {
         .form-content {
             .form-row:first-child::before {
-                content: "Reset password";
+                content: var(--auth-reset-password-heading, "Reset password");
                 display: block;
                 font-size: 24px;
                 font-weight: 600;

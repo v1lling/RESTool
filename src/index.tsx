@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import './i18n';
 
 import './index.scss';
+import './overrides/i18nOverrides';
 
 ReactDOM.render(
     <Suspense fallback={null}>
