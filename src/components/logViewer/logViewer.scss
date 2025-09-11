@@ -62,7 +62,6 @@
     align-items: baseline;
     line-height: 1.5;
     border-radius: 2px;
-    overflow: hidden;
 
     &:hover {
       background-color: #f8f9fa;
@@ -167,13 +166,12 @@
 }
 
 
-/* Scrollbar styling */
 .log-viewer__wrapper {
-
   overflow: auto;
 
   &::-webkit-scrollbar {
-    width: 12px;
+    width: 12px;   /* vertical */
+    height: 12px;  /* horizontal */
   }
 
   &::-webkit-scrollbar-track {
@@ -190,7 +188,6 @@
     background-color: #a0a0a0;
   }
 }
-
 // Log viewer page header buttons
 .log-viewer-buttons {
   display: flex;

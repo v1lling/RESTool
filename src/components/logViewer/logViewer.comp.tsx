@@ -9,7 +9,7 @@ interface LogEntry {
   level?: string;
   logger?: string;
   content?: string;
-  originalMessage?: string;
+  raw?: string;
 }
 
 interface IProps {
@@ -100,7 +100,7 @@ const LogViewerComp = forwardRef<any, IProps>(({ context, initialPollingState = 
         </>
       );
     }
-    return <span className="log-viewer__message">{log.originalMessage}</span>;
+    return <span className="log-viewer__message">{log.raw}</span>;
   };
 
   return (
