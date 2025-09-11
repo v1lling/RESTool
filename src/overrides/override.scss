@@ -594,12 +594,20 @@ body {
                     min-height: 100%;
                     margin-bottom: 88px;
 
+                    // Remove default padding from all form rows
                     .form-row {
-                        padding-top: 24px;
+                        padding-top: 0;
                     }
 
-                    .form-row+.form-row {
-                        padding-top: 0;
+                    // Add padding only to the first visible form row
+                    // (ignore hidden fields)
+                    .form-row:not(:has(input[type="hidden"])) {
+                        padding-top: 24px;
+                        
+                        // Remove padding from subsequent visible rows
+                        & ~ .form-row:not(:has(input[type="hidden"])) {
+                            padding-top: 0;
+                        }
                     }
                 }
             }
