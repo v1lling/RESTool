@@ -178,7 +178,7 @@ export const Cards = withAppContext(({ context, items, fields, callbacks, custom
                       }
                     }}
                   >
-                    {field.label || translatePage(`fields.${field.name}.label`) || field.name}:{" "}
+                    {field.label || translatePage(`fields.${field.name}.label`) || field.name}{" "}
                   </label>
                   {translatePage(`fields.${field.name}.helpText`, { returnNull: true }) && (
                     <div className="help-text">
