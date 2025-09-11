@@ -33,8 +33,6 @@
   }
 
   .apply-changes-button {
-    color: white;
-    background: color-mix(in srgb, var(--uptrust-button-primary) 80%, transparent);
     padding: 8px 16px;
     border-radius: 6px;
     font-weight: 600;
@@ -43,9 +41,12 @@
     transition: all 0.2s ease;
     white-space: nowrap;
     min-height: auto;
+    border: 1px solid var(--notification-info-border);
+    color: var(--uptrust-button-active);
+    background: color-mix(in srgb, var(--uptrust-button-primary) 30%, transparent);
 
     &:hover {
-      background: color-mix(in srgb, var(--uptrust-button-primary) 60%, transparent);
+      background: color-mix(in srgb, var(--uptrust-button-primary) 35%, transparent);
     }
 
     &:active {
