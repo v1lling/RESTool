@@ -1006,7 +1006,20 @@ const PageComp = ({ context }: IProps) => {
       <header className="app-page-header">
         <hgroup>
           <h2>{translatePage('title') || activePage?.name} </h2>
-          <h4>{translatePage('description') || activePage?.description}</h4>
+          <h4>
+            {translatePage('description') || activePage?.description}
+            {activePage?.helpUrl && (
+              <a
+                href={activePage.helpUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="page-help-icon"
+                aria-label="Help"
+              >
+                <i className="fa fa-question-circle" aria-hidden="true"></i>
+              </a>
+            )}
+          </h4>
         </hgroup>
         {/* Show button: edit for single-item pages, add for regular pages */}
         {(activePage?.singleItemPage && putConfig) || postConfig ? (
